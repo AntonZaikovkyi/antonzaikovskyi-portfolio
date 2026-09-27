@@ -1,9 +1,5 @@
 "use strict";
 
-// ============================================================
-// 1. АУДІОДЕМО: відтворення, перемотування та звукова хвиля
-// ============================================================
-
 const audio = document.querySelector("#demo-audio");
 const toggle = document.querySelector("#audio-toggle");
 const seek = document.querySelector("#audio-seek");
@@ -12,7 +8,6 @@ const currentLabel = document.querySelector("#audio-current");
 const durationLabel = document.querySelector("#audio-duration");
 const audioError = document.querySelector("#audio-error");
 
-// Тривалість поточного демо до завантаження метаданих файлу.
 const DEFAULT_DEMO_DURATION = 81.92;
 
 function formatTime(seconds) {
@@ -22,7 +17,6 @@ function formatTime(seconds) {
   return `${minutes}:${remainingSeconds}`;
 }
 
-// Дані беруться з waveform-data.js, без fetch та локального сервера.
 const levels = typeof DEMO_WAVEFORM !== "undefined" ? DEMO_WAVEFORM : [];
 const waveBars = levels.map((level) => {
   const bar = document.createElement("i");
@@ -103,12 +97,6 @@ audio.addEventListener("error", () => {
   audioError.hidden = false;
 });
 
-// ============================================================
-// 2. ВІДЕОПЛЕЄР: Google Drive або локальний відеофайл
-// Налаштування кожної роботи задаються в index.html:
-// data-title — заголовок; data-drive — ID Google Drive;
-// data-local — необов’язковий шлях до локального відео.
-// ============================================================
 
 const dialog = document.querySelector("#media-dialog");
 const mediaContainer = document.querySelector("#media-container");
@@ -148,7 +136,6 @@ document.querySelector(".dialog-close").addEventListener("click", () => {
   dialog.close();
 });
 
-// Закриття натисканням за межами вікна. Escape обробляє сам <dialog>.
 dialog.addEventListener("click", (event) => {
   if (event.target !== dialog) return;
   const rect = dialog.getBoundingClientRect();
@@ -160,15 +147,11 @@ dialog.addEventListener("click", (event) => {
 });
 
 dialog.addEventListener("close", () => {
-  // Видалення плеєра зупиняє відео, включно з Google Drive.
   mediaContainer.replaceChildren();
   document.body.style.overflow = "";
   lastTrigger?.focus();
 });
 
-// ============================================================
-// 3. ПЛАВНА ПОЯВА БЛОКІВ І ОБРОБКА ЗОБРАЖЕНЬ
-// ============================================================
 
 document.querySelectorAll("img").forEach((img) => {
   img.addEventListener("error", () => {

@@ -1,12 +1,4 @@
-/*
-  ОФОРМЛЕННЯ ПОРТФОЛІО
-  Кольори та базовий шрифт — у :root.
-  Нижче: компоненти, адаптивні правила @media та фінальні перевизначення.
-  Порядок CSS-правил важливий: пізніші правила уточнюють попередні.
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;450;500;550;600;650;700;750;800&display=swap');
-/* Палітра і загальні параметри */
 :root {
   --bg: #111615;
   --surface: #1b211f;
@@ -1112,7 +1104,6 @@ dialog::backdrop {
 
 }
 
-/* Адаптація до розміру екрана */
 @media(min-width:1500px) {
   .hero h1 {
     font-size: 4.9rem;
@@ -1907,7 +1898,7 @@ h1,h2 {
   display: none!important;
 }
 
-/* Повага до налаштування зменшення анімацій */
+
 @media(prefers-reduced-motion:reduce) {
   :root {
     scroll-behavior: auto;
